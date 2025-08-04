@@ -1,5 +1,7 @@
 # Curso-SQL-Coderhouse---1era-entrega
 
+<img width="520" height="343" alt="image" src="https://github.com/user-attachments/assets/287388c6-8abb-4513-b0d2-166a2ce4150f" />
+
 Introducción:
 En esta presentación se abordará la temática comercial y crediticia de una entidad bancaria, relacionando el área comercial tanto con su propia área de créditos como con los clientes de la entidad (segmento empresas), buscando eficientizar el proceso de ventas y mejora de la comunicación. 
 
