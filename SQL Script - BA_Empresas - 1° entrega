@@ -1,0 +1,90 @@
+CREATE DATABASE IF NOT EXISTS BA_empresas;
+USE BA_empresas;
+CREATE TABLE IF NOT EXISTS clientes (
+id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+razon_social VARCHAR (50) NOT NULL,
+sector_economico VARCHAR (50) NOT NULL,
+actividad VARCHAR (50) NOT NULL,
+estado_linea_de_credito VARCHAR (10) NOT NULL )
+;
+
+CREATE TABLE IF NOT EXISTS legajo_crediticio (
+id_legajo INT PRIMARY KEY AUTO_INCREMENT,
+id_cliente INT NOT NULL,
+monto_calificado DECIMAL (20,0),
+fecha_calificacion DATE,
+fecha_vencimiento DATE,
+fecha_informacion DATE,
+facturacion DECIMAL (20,0),
+deuda DECIMAL(20,0),
+FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente)
+);
+
+CREATE TABLE IF NOT EXISTS productos (
+id_producto INT PRIMARY KEY AUTO_INCREMENT,
+nombre VARCHAR (50)
+);
+
+CREATE TABLE IF NOT EXISTS ventas (
+id_venta INT PRIMARY KEY AUTO_INCREMENT,
+id_cliente INT NOT NULL,
+id_producto INT NOT NULL,
+fecha_venta DATE,
+monto INT,
+tasa DECIMAL (5,0),
+plazo INT,
+FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente),
+FOREIGN KEY (id_producto) REFERENCES productos (id_producto)
+);
+
+INSERT INTO clientes (razon_social, sector_economico, actividad, estado_linea_de_credito)
+VALUES 
+('AgroMaq SA', 'Agricultura', 'Venta de maquinaria', 'Activo'),
+('TechNova SRL', 'Tecnología', 'Desarrollo software', 'Activo'),
+('ConstruMax', 'Construcción', 'Obras civiles', 'No activo'),
+('Alimentos del Sur', 'Alimentos', 'Producción y venta', 'Activo'),
+('ElectroPlus', 'Electrónica', 'Venta de equipos', 'Activo'),
+('Transporte Rápido', 'Logística', 'Transporte de carga', 'Activo'),
+('Finanzas Global', 'Finanzas', 'Servicios financieros', 'No activo'),
+('Servicios Limpios', 'Servicios', 'Limpieza industrial', 'Activo'),
+('Textiles Patagónicos', 'Textil', 'Fabricación de ropa', 'Activo'),
+('Comercio Central', 'Comercio', 'Venta minorista', 'Activo')
+;
+
+INSERT INTO legajo_crediticio (id_cliente, monto_calificado, fecha_calificacion, fecha_vencimiento, fecha_informacion, facturacion, deuda)
+VALUES 
+(1, 15000000, '2025-07-01','2026-07-01', '2025-05-31', 1200000, 3000000),
+(2, 8000000, '2025-06-10','2026-06-10', '2025-05-31', 600000, 1500000),
+(3, 5000000, '2025-05-05','2026-05-05', '2025-03-31', 450000, 200000),
+(4, 12000000, '2025-07-03','2026-07-03', '2025-03-31', 1000000, 5000000),
+(5, 7000000, '2025-06-18','2026-06-18', '2025-04-30', 800000, 1000000),
+(6, 9000000, '2025-07-10','2026-07-10', '2025-05-31', 750000, 250000),
+(7, 6000000, '2025-06-22','2026-06-22', '2025-04-30', 500000, 400000),
+(8, 4000000, '2025-05-30','2026-05-30', '2025-04-30', 300000, 150000),
+(9, 8500000, '2025-07-05','2026-07-05', '2025-06-30', 700000, 600000),
+(10, 3000000, '2025-05-15','2026-05-15', '2025-04-30', 200000, 100000)
+;
+
+INSERT INTO productos (nombre)
+VALUES
+('Capital de trabajo'),
+('Prendario'),
+('Tarjeta de Crédito'),
+('Leasing'),
+('Inversión'),
+('Descuento de chques')
+;
+
+INSERT INTO ventas (id_cliente, id_producto, fecha_venta, monto, tasa, plazo)
+VALUES
+(1, 1, '2025-07-20', 5000000, 40, 180),
+(2, 6, '2025-07-21', 800000, 45, 365),
+(3, 5, '2025-07-22', 150000, 70, 30),
+(4, 4, '2025-07-23', 3000000, 38, 365),
+(5, 5, '2025-07-24', 10000000, 32, 360),
+(6, 6, '2025-07-25', 2500000, 50, 90),
+(7, 1, '2025-07-26', 1200000, 42, 120),
+(8, 3, '2025-07-27', 200000, 75, 60),
+(9, 1, '2025-07-28', 4000000, 30, 180),
+(10, 2, '2025-07-29', 1000000, 40, 90)
+;
