@@ -1,4 +1,4 @@
-# Curso-SQL-Coderhouse---1era-entrega
+# Curso-SQL-Coderhouse---1° entrega
 
 <img width="520" height="343" alt="image" src="https://github.com/user-attachments/assets/287388c6-8abb-4513-b0d2-166a2ce4150f" />
 
